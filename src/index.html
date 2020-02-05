@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Flappy Bird</title>
+  </head>
+  <style>
+    #begin {
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      display: none;
+      padding: 4px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .box {
+      position: relative;
+    }
+    .box canvas {
+      width: 100%;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <canvas id="cvs" width="800" height="600"></canvas>
+    </div>
+    <div id="begin">开始游戏</div>
+  </body>
+</html>
