@@ -9,17 +9,18 @@ import Pipe from './pipe'
 let sources = ['birds', 'land', 'pipe1', 'pipe2', 'sky']
 let resetDom = document.getElementById('begin')
 loader.load(sources, imageMap => {
+  firstFrame(imageMap)
   resetDom.addEventListener('click', () => {
     resetDom.style.display = 'none'
     main(imageMap)
   })
 })
-firstFrame()
 
-function firstFrame() {
+function firstFrame(imageMap) {
   let cvs = document.getElementById('cvs')
   let ctx = cvs.getContext('2d')
   ctx.font = '30px Verdana'
+  ctx.drawImage(imageMap.sky, 0, 0)
   ctx.strokeText('flappy bird', 300, 300)
 }
 
