@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .box {
+        max-width: 600px;
+      }
+      #cvs {
+        width: 100%;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <canvas id="cvs" width="800" height="600"></canvas>
+    </div>
+  </body>
+</html>
+<script>
+  var cvs = document.getElementById('cvs')
+  var ctx = cvs.getContext('2d')
+  var img = new Image()
+  img.src = './birds.png'
+
+  img.addEventListener('load', () => {
+    main()
+  })
+
+  function main() {
+    loop(Date.now())
+  }
+
+  var frame = 0
+
+  function loop(lastTime) {
+    var now = Date.now()
+    var dt = now - lastTime
+    frame = (frame + 1) % 3
+    ctx.clearRect(0, 0, 800, 600)
+    ctx.drawImage(img, frame * 52, 0, 52, 45, 100, 100, 52, 45)
+
+    let withTime = loop.bind(this, Date.now())
+    requestAnimationFrame(withTime)
+  }
+</script>
